@@ -1,0 +1,1222 @@
+/* =========================================================
+   AI FAQ ASSISTANT
+   PREMIUM AI INTERFACE
+   Glassmorphism • Animated Background • Responsive
+   ========================================================= */
+
+
+/* =========================================================
+   01. GLOBAL RESET
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+
+  color: #172033;
+
+  background: #eef4ff;
+
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   02. ANIMATED BACKGROUND
+   ========================================================= */
+
+body::before {
+  content: "";
+
+  position: fixed;
+
+  width: 650px;
+  height: 650px;
+
+  top: -260px;
+  left: -220px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(37, 99, 235, 0.32) 0%,
+      rgba(99, 102, 241, 0.18) 35%,
+      rgba(99, 102, 241, 0) 72%
+    );
+
+  filter: blur(20px);
+
+  pointer-events: none;
+
+  z-index: -5;
+
+  animation: blueOrb 18s ease-in-out infinite alternate;
+}
+
+body::after {
+  content: "";
+
+  position: fixed;
+
+  width: 650px;
+  height: 650px;
+
+  right: -250px;
+  bottom: -250px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(139, 92, 246, 0.30) 0%,
+      rgba(6, 182, 212, 0.16) 35%,
+      rgba(6, 182, 212, 0) 72%
+    );
+
+  filter: blur(20px);
+
+  pointer-events: none;
+
+  z-index: -5;
+
+  animation: purpleOrb 20s ease-in-out infinite alternate;
+}
+
+
+/* =========================================================
+   03. ORB ANIMATIONS
+   ========================================================= */
+
+@keyframes blueOrb {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  25% {
+    transform: translate(100px, 80px) scale(1.08);
+  }
+
+  50% {
+    transform: translate(180px, 160px) scale(0.92);
+  }
+
+  75% {
+    transform: translate(80px, 240px) scale(1.12);
+  }
+
+  100% {
+    transform: translate(240px, 100px) scale(1);
+  }
+}
+
+@keyframes purpleOrb {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  25% {
+    transform: translate(-100px, -80px) scale(1.08);
+  }
+
+  50% {
+    transform: translate(-180px, -140px) scale(0.94);
+  }
+
+  75% {
+    transform: translate(-60px, -220px) scale(1.12);
+  }
+
+  100% {
+    transform: translate(-220px, -100px) scale(1);
+  }
+}
+
+
+/* =========================================================
+   04. MAIN APP
+   ========================================================= */
+
+.App {
+  min-height: 100vh;
+
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  padding:
+    75px
+    20px
+    100px;
+
+  position: relative;
+
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   04A. MAIN CONTAINER
+   CENTER ALIGNMENT FIX
+   ========================================================= */
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   05. MAIN GLOW
+   ========================================================= */
+
+.App::before {
+  content: "";
+
+  position: fixed;
+
+  width: 350px;
+  height: 350px;
+
+  top: 35%;
+  left: -180px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(6, 182, 212, 0.20),
+      transparent 70%
+    );
+
+  filter: blur(35px);
+
+  pointer-events: none;
+
+  z-index: -2;
+
+  animation: sideGlow 14s ease-in-out infinite alternate;
+}
+
+.App::after {
+  content: "";
+
+  position: fixed;
+
+  width: 350px;
+  height: 350px;
+
+  top: 25%;
+  right: -180px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(168, 85, 247, 0.18),
+      transparent 70%
+    );
+
+  filter: blur(35px);
+
+  pointer-events: none;
+
+  z-index: -2;
+
+  animation: sideGlowRight 16s ease-in-out infinite alternate;
+}
+
+@keyframes sideGlow {
+  0% {
+    transform: translateY(-50px) scale(0.9);
+  }
+
+  100% {
+    transform: translateY(180px) scale(1.15);
+  }
+}
+
+@keyframes sideGlowRight {
+  0% {
+    transform: translateY(100px) scale(1);
+  }
+
+  100% {
+    transform: translateY(-180px) scale(1.15);
+  }
+}
+
+
+/* =========================================================
+   06. TITLE
+   ========================================================= */
+
+.App h1 {
+  margin: 0;
+
+  position: relative;
+
+  font-size: clamp(36px, 6vw, 58px);
+
+  line-height: 1.05;
+
+  font-weight: 850;
+
+  letter-spacing: -3px;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      90deg,
+      #2563eb 0%,
+      #4f46e5 30%,
+      #7c3aed 60%,
+      #0891b2 100%
+    );
+
+  background-size: 250% auto;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  animation: titleGradient 8s linear infinite;
+
+  filter:
+    drop-shadow(
+      0 10px 25px
+      rgba(79, 70, 229, 0.15)
+    );
+}
+
+@keyframes titleGradient {
+  0% {
+    background-position: 0% center;
+  }
+
+  50% {
+    background-position: 100% center;
+  }
+
+  100% {
+    background-position: 0% center;
+  }
+}
+
+
+/* =========================================================
+   07. SUBTITLE
+   ========================================================= */
+
+.App h1::after {
+  content:
+    "Your intelligent assistant for quick and reliable answers";
+
+  display: block;
+
+  margin-top: 18px;
+
+  color: #64748b;
+
+  font-size: 15px;
+
+  line-height: 1.6;
+
+  font-weight: 450;
+
+  letter-spacing: 0;
+
+  -webkit-text-fill-color: #64748b;
+
+  animation: subtitleFade 1.2s ease forwards;
+}
+
+@keyframes subtitleFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================================
+   08. INPUT AREA
+   ========================================================= */
+
+.input-area {
+  width: min(820px, 94vw);
+
+  margin-top: 48px;
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 13px;
+
+  position: relative;
+
+  z-index: 2;
+}
+
+
+/* =========================================================
+   09. INPUT
+   ========================================================= */
+
+.App input {
+  width: 100%;
+
+  height: 62px;
+
+  padding: 0 23px;
+
+  border:
+    1px solid
+    rgba(148, 163, 184, 0.32);
+
+  border-radius: 19px;
+
+  outline: none;
+
+  background:
+    rgba(255, 255, 255, 0.76);
+
+  backdrop-filter: blur(24px);
+
+  -webkit-backdrop-filter: blur(24px);
+
+  color: #111827;
+
+  font-size: 16px;
+
+  font-weight: 500;
+
+  box-shadow:
+    0 20px 55px
+    rgba(30, 64, 175, 0.10),
+
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.8);
+
+  transition:
+    border 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+.App input::placeholder {
+  color: #94a3b8;
+
+  font-weight: 400;
+}
+
+.App input:hover {
+  border-color:
+    rgba(99, 102, 241, 0.38);
+
+  background:
+    rgba(255, 255, 255, 0.86);
+}
+
+.App input:focus {
+  border-color:
+    rgba(79, 70, 229, 0.65);
+
+  background:
+    rgba(255, 255, 255, 0.94);
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 0 0 5px
+    rgba(99, 102, 241, 0.09),
+
+    0 25px 60px
+    rgba(30, 64, 175, 0.15),
+
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.9);
+}
+
+
+/* =========================================================
+   10. BUTTON BASE
+   ========================================================= */
+
+.App button {
+  min-width: 125px;
+
+  height: 48px;
+
+  padding: 0 21px;
+
+  margin: 0;
+
+  border: 0;
+
+  border-radius: 13px;
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  font-weight: 750;
+
+  letter-spacing: 0.1px;
+
+  cursor: pointer;
+
+  position: relative;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 10px 25px
+    rgba(37, 99, 235, 0.20);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+}
+
+
+/* =========================================================
+   11. BUTTON SHINE
+   ========================================================= */
+
+.App button::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -120%;
+
+  width: 80%;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      100deg,
+      transparent,
+      rgba(255, 255, 255, 0.28),
+      transparent
+    );
+
+  transform: skewX(-20deg);
+
+  transition: left 0.55s ease;
+
+  pointer-events: none;
+}
+
+.App button:hover::before {
+  left: 140%;
+}
+
+
+/* =========================================================
+   12. BUTTON HOVER
+   ========================================================= */
+
+.App button:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 16px 35px
+    rgba(37, 99, 235, 0.30);
+
+  filter: brightness(1.04);
+}
+
+.App button:active {
+  transform:
+    translateY(-1px)
+    scale(0.98);
+}
+
+
+/* =========================================================
+   13. ASK AI BUTTON
+   ========================================================= */
+
+.App button:first-of-type {
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #4f46e5,
+      #7c3aed
+    );
+
+  background-size: 180% 180%;
+
+  animation: askButtonGlow 5s ease infinite;
+}
+
+@keyframes askButtonGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+/* =========================================================
+   14. SPEAK BUTTON
+   ========================================================= */
+
+.App button:nth-of-type(2) {
+  background:
+    linear-gradient(
+      135deg,
+      #0891b2,
+      #06b6d4,
+      #2563eb
+    );
+
+  background-size: 180% 180%;
+
+  animation: speakButtonGlow 6s ease infinite;
+}
+
+@keyframes speakButtonGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+/* =========================================================
+   15. CLEAR BUTTON
+   ========================================================= */
+
+.App button:last-of-type {
+  background:
+    rgba(255, 255, 255, 0.82);
+
+  color: #475569;
+
+  border:
+    1px solid
+    rgba(148, 163, 184, 0.35);
+
+  box-shadow:
+    0 10px 25px
+    rgba(15, 23, 42, 0.08);
+}
+
+.App button:last-of-type:hover {
+  background:
+    rgba(255, 255, 255, 0.98);
+
+  color: #2563eb;
+
+  border-color:
+    rgba(37, 99, 235, 0.25);
+
+  box-shadow:
+    0 16px 30px
+    rgba(15, 23, 42, 0.12);
+}
+
+
+/* =========================================================
+   16. DISABLED BUTTON
+   ========================================================= */
+
+.App button:disabled {
+  opacity: 0.65;
+
+  cursor: not-allowed;
+
+  transform: none;
+
+  filter: none;
+
+  animation: none;
+
+  box-shadow: none;
+}
+
+.App button:disabled::before {
+  display: none;
+}
+
+
+/* =========================================================
+   17. ANSWER TITLE
+   ========================================================= */
+
+.App h2 {
+  width: min(820px, 94vw);
+
+  margin:
+    55px
+    0
+    16px;
+
+  color: #1e293b;
+
+  font-size: 20px;
+
+  font-weight: 800;
+
+  letter-spacing: -0.4px;
+
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.App h2::before {
+  content: "";
+
+  width: 5px;
+  height: 22px;
+
+  flex-shrink: 0;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #2563eb,
+      #7c3aed
+    );
+
+  box-shadow:
+    0 5px 15px
+    rgba(79, 70, 229, 0.30);
+}
+
+
+/* =========================================================
+   18. ANSWER AREA
+   ========================================================= */
+
+.answer-box {
+  width: 100%;
+  max-width: 820px;
+
+  margin: 0 auto;
+
+  text-align: left;
+}
+
+
+/* =========================================================
+   19. ANSWER CARD
+   ========================================================= */
+
+.answer-box p {
+  width: 100%;
+
+  margin: 0 0 16px;
+
+  padding:
+    30px
+    32px;
+
+  border:
+    1px solid
+    rgba(148, 163, 184, 0.24);
+
+  border-radius: 21px;
+
+  background:
+    rgba(255, 255, 255, 0.72);
+
+  backdrop-filter: blur(25px);
+
+  -webkit-backdrop-filter: blur(25px);
+
+  color: #334155;
+
+  font-size: 16px;
+
+  line-height: 1.85;
+
+  font-weight: 450;
+
+  box-shadow:
+    0 25px 70px
+    rgba(15, 23, 42, 0.09),
+
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.85);
+
+  white-space: pre-wrap;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.answer-box p:hover {
+  transform: translateY(-3px);
+
+  border-color:
+    rgba(99, 102, 241, 0.22);
+
+  box-shadow:
+    0 30px 80px
+    rgba(37, 99, 235, 0.12),
+
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.9);
+}
+
+
+/* =========================================================
+   20. MARKDOWN HEADINGS
+   ========================================================= */
+
+.answer-box h1,
+.answer-box h2,
+.answer-box h3 {
+  width: auto;
+
+  margin:
+    18px
+    0
+    10px;
+
+  color: #1e293b;
+
+  text-align: left;
+}
+
+
+/* =========================================================
+   21. MARKDOWN LISTS
+   ========================================================= */
+
+.answer-box ul,
+.answer-box ol {
+  padding-left: 24px;
+
+  margin:
+    12px
+    0;
+}
+
+.answer-box li {
+  margin:
+    7px
+    0;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   22. MARKDOWN CODE
+   ========================================================= */
+
+.answer-box code {
+  padding:
+    3px
+    7px;
+
+  border-radius: 7px;
+
+  background:
+    rgba(99, 102, 241, 0.09);
+
+  color: #4f46e5;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   23. MARKDOWN BOLD
+   ========================================================= */
+
+.answer-box strong {
+  color: #1e293b;
+
+  font-weight: 750;
+}
+
+
+/* =========================================================
+   24. EMPTY ANSWER
+   ========================================================= */
+
+.answer-box p:empty {
+  min-height: 90px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: #94a3b8;
+
+  font-style: italic;
+}
+
+
+/* =========================================================
+   25. CUSTOM SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background:
+    rgba(226, 232, 240, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #6366f1,
+      #06b6d4
+    );
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background:
+    linear-gradient(
+      180deg,
+      #4f46e5,
+      #0891b2
+    );
+}
+
+
+/* =========================================================
+   26. SELECTION
+   ========================================================= */
+
+::selection {
+  background:
+    rgba(99, 102, 241, 0.20);
+
+  color: #1e293b;
+}
+
+
+/* =========================================================
+   27. MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .App {
+    padding:
+      50px
+      16px
+      70px;
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  .App h1 {
+    font-size:
+      clamp(
+        34px,
+        10vw,
+        45px
+      );
+
+    letter-spacing: -2px;
+  }
+
+  .App h1::after {
+    margin-top: 13px;
+
+    font-size: 13px;
+
+    padding:
+      0
+      15px;
+  }
+
+  .input-area {
+    width: 100%;
+
+    margin-top: 35px;
+
+    gap: 10px;
+  }
+
+  .App input {
+    height: 58px;
+
+    font-size: 15px;
+
+    padding:
+      0
+      18px;
+  }
+
+  .App button {
+    flex: 1;
+
+    min-width: 0;
+
+    height: 46px;
+
+    padding:
+      0
+      12px;
+
+    font-size: 13px;
+  }
+
+  .App h2 {
+    width: 100%;
+
+    margin-top: 45px;
+
+    font-size: 18px;
+  }
+
+  .answer-box {
+    width: 100%;
+  }
+
+  .answer-box p {
+    width: 100%;
+
+    padding:
+      23px
+      21px;
+
+    font-size: 15px;
+
+    line-height: 1.75;
+  }
+}
+
+
+/* =========================================================
+   28. SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 430px) {
+
+  .App {
+    padding:
+      38px
+      12px
+      60px;
+  }
+
+  .App h1 {
+    font-size: 31px;
+
+    letter-spacing:
+      -1.5px;
+  }
+
+  .App h1::after {
+    font-size: 12px;
+
+    line-height: 1.5;
+  }
+
+  .input-area {
+    gap: 8px;
+  }
+
+  .App input {
+    height: 54px;
+
+    border-radius: 16px;
+
+    font-size: 14px;
+  }
+
+  .App button {
+    height: 44px;
+
+    padding:
+      0
+      8px;
+
+    border-radius: 11px;
+
+    font-size: 12px;
+  }
+
+  .App h2 {
+    margin-top: 38px;
+
+    font-size: 17px;
+  }
+
+  .answer-box p {
+    padding:
+      20px
+      18px;
+
+    border-radius: 17px;
+
+    font-size: 14px;
+  }
+}
+
+
+/* =========================================================
+   29. VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 350px) {
+
+  .App {
+    padding:
+      32px
+      10px
+      50px;
+  }
+
+  .App h1 {
+    font-size: 27px;
+  }
+
+  .App h1::after {
+    font-size: 11px;
+  }
+
+  .App button {
+    font-size: 11px;
+
+    padding:
+      0
+      6px;
+  }
+
+  .answer-box p {
+    padding:
+      18px
+      15px;
+  }
+}
+
+
+/* =========================================================
+   30. REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration:
+      0.01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    transition-duration:
+      0.01ms !important;
+
+    scroll-behavior:
+      auto !important;
+  }
+}
+
+
+/* =========================================================
+   31. FINAL POLISH
+   ========================================================= */
+
+button,
+input {
+  -webkit-tap-highlight-color:
+    transparent;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline:
+    3px solid
+    rgba(99, 102, 241, 0.25);
+
+  outline-offset: 3px;
+}
